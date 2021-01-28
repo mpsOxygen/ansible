@@ -60,7 +60,7 @@ Start the environment:
 Login to your control host via SSH:
 
 ```bash
-ssh user@control
+[root@localhost rhce8env]# ssh user@control
 ```
 
 Most prerequisite tasks have already been done for you:
