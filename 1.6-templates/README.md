@@ -108,13 +108,13 @@ running kernel {{ ansible_kernel }}.
 * Run the playbook.
 
 ```bash
-[student1@ansible ~]$ ansible-playbook motd-facts.yml
+[user@ansible ~]$ ansible-playbook motd-facts.yml
 ```
 
 * Verify the new message via SSH login to `node1`.
 
 ```bash
-[student1@ansible ~]$ ssh node1
+[user@ansible ~]$ ssh node1
 Welcome to node1.
 RedHat 8.1
 deployed on x86_64 architecture

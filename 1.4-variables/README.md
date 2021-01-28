@@ -54,7 +54,7 @@ The recommended practice to provide variables in the inventory is to define them
 
 For understanding and practice let’s do a lab. Following up on the theme "Let’s build a web server. Or two. Or even more…​", you will change the `index.html` to show the development environment (dev/prod) a server is deployed in.
 
-On the ansible control host, as the `student<X>` user, create the directories to hold the variable definitions in `~/ansible-files/`:
+On the ansible control host, as the `user` user, create the directories to hold the variable definitions in `~/ansible-files/`:
 
 ```bash
 [user@control ansible-files]$ mkdir host_vars group_vars
@@ -149,7 +149,7 @@ For node1:
 For node2:
 
 ```bash
-[student1@ansible ansible-files]$ curl http://node2
+[user@ansible ansible-files]$ curl http://node2
 <body>
 <h1>This is a production webserver, take care!</h1>
 </body>
@@ -158,7 +158,7 @@ For node2:
 For node3:
 
 ```bash
-[student1@ansible ansible-files]$ curl http://node3
+[user@ansible ansible-files]$ curl http://node3
 <body>
 <h1>This is a development webserver, have fun!</h1>
 </body>

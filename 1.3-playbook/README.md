@@ -162,7 +162,7 @@ Managed by Ansible
 Use the command `rpm -qi httpd` to verify httpd is installed:
 
 ```bash
-[student<X>@node1 ~]$ rpm -qi httpd
+[user@node1 ~]$ rpm -qi httpd
 Name        : httpd
 Version     : 2.4.6
 [...]
@@ -231,7 +231,7 @@ Check that the tasks were executed correctly and Apache is accepting connections
 
 There are a lot of red lines and an error: As long as there is not at least an `web.html` file to be served by Apache, it will throw an ugly "HTTP Error 403: Forbidden" status and Ansible will report an error.
 
-So why not use Ansible to deploy a simple `web.html` file? On the ansible control host, as the `student<X>` user, create the directory `files` to hold file resources in `~/ansible-files/`:
+So why not use Ansible to deploy a simple `web.html` file? On the ansible control host, as the `user` user, create the directory `files` to hold file resources in `~/ansible-files/`:
 
 ```bash
 [user@control ansible-files]$ mkdir files
@@ -292,9 +292,9 @@ As you might remember, the inventory lists all nodes as members of the group `we
 
 ```ini
 [web]
-node1 ansible_host=11.22.33.44
-node2 ansible_host=22.33.44.55
-node3 ansible_host=33.44.55.66
+node1 ansible_host=192.168.55.201
+node2 ansible_host=192.168.55.202
+node3 ansible_host=192.168.55.203
 ```
 
 > **Tip**

@@ -39,24 +39,24 @@ For more on this, please refer to the documentation: <http://jinja.pocoo.org/doc
 
 As an example you would like to install an FTP server, but only on hosts that are in the "ftpserver" inventory group.
 
-To do that, first edit the inventory to add another group, and place `node2` in it. Make sure that that IP address of `node2` is always the same when `node2` is listed. Edit the inventory `~/lab_inventory/hosts` to look like the following listing:
+To do that, first edit the inventory to add another group, and place `node2` in it. Make sure that that IP address of `node2` is always the same when `node2` is listed. Edit the inventory `~/inventory/inventory.ini` to look like the following listing:
 
 ```ini
 [all:vars]
-ansible_user=student1
-ansible_ssh_pass=ansible
+ansible_user=user
+ansible_ssh_pass=password
 ansible_port=22
 
 [web]
-node1 ansible_host=11.22.33.44
-node2 ansible_host=22.33.44.55
-node3 ansible_host=33.44.55.66
+node1 ansible_host=192.168.55.201
+node2 ansible_host=192.168.55.202
+node3 ansible_host=192.168.55.203
 
 [ftpserver]
-node2 ansible_host=22.33.44.55
+node2 ansible_host=192.168.55.202
 
 [control]
-ansible ansible_host=44.55.66.77
+ansible ansible_host=192.168.55.200
 ```
 
 Next create the file `ftpserver.yml` on your control host in the `~/ansible-files/` directory:
@@ -103,7 +103,7 @@ First we need the file Ansible will deploy, let’s just take the one from node1
 
 ```bash
 [user@control ansible-files]$ scp node1:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
-student<X>@11.22.33.44's password:
+user@11.22.33.44's password:
 httpd.conf
 ```
 
@@ -151,9 +151,9 @@ Listen 8080
 Apache should now listen on port 8080. Easy enough to verify:
 
 ```bash
-[student1@ansible ansible-files]$ curl http://node1
+[user@ansible ansible-files]$ curl http://node1
 curl: (7) Failed to connect to node1 port 80: Connection refused
-[student1@ansible ansible-files]$ curl http://node1:8080
+[user@ansible ansible-files]$ curl http://node1:8080
 <body>
 <h1>This is a production webserver, take care!</h1>
 </body>

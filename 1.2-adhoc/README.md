@@ -31,17 +31,17 @@ To use the ansible command for host management, you need to provide an inventory
 
 ```bash
 [all:vars]
-ansible_user=student1
-ansible_ssh_pass=PASSWORD
+ansible_user=user
+ansible_ssh_pass=password
 ansible_port=22
 
 [web]
-node1 ansible_host=<X.X.X.X>
-node2 ansible_host=<Y.Y.Y.Y>
-node3 ansible_host=<Z.Z.Z.Z>
+node1 ansible_host=192.168.55.201
+node2 ansible_host=192.168.55.202
+node3 ansible_host=192.168.55.203
 
 [control]
-ansible ansible_host=44.55.66.77
+ansible ansible_host=192.168.55.200
 ```
 
 Ansible is already configured to use the inventory specific to your environment. We will show you in the next step how that is done. For now, we will execute some simple commands to work with the inventory.
@@ -51,7 +51,7 @@ To reference inventory hosts, you supply a host pattern to the ansible command. 
 The most basic host pattern is the name for a single managed host listed in the inventory file. This specifies that the host will be the only one in the inventory file that will be acted upon by the ansible command. Run:
 
 ```bash
-[student<X@>ansible ~]$ ansible node1 --list-hosts
+[user@control ~]$ ansible node1 --list-hosts
   hosts (1):
     node1
 ```
@@ -59,10 +59,10 @@ The most basic host pattern is the name for a single managed host listed in the 
 An inventory file can contain a lot more information, it can organize your hosts in groups or define variables. In our example, the current inventory has the groups `web` and `control`. Run Ansible with these host patterns and observe the output:
 
 ```bash
-[student<X@>ansible ~]$ ansible web  --list-hosts
-[student<X@>ansible ~]$ ansible web,ansible --list-hosts
-[student<X@>ansible ~]$ ansible 'node*' --list-hosts
-[student<X@>ansible ~]$ ansible all --list-hosts
+[user@control ~]$ ansible web  --list-hosts
+[user@control ~]$ ansible web,ansible --list-hosts
+[user@control ~]$ ansible 'node*' --list-hosts
+[user@control ~]$ ansible all --list-hosts
 ```
 
 As you see it is OK to put systems in more than one group. For instance, a server could be both a web server and a database server. Note that in Ansible the groups are not necessarily hierarchical.
@@ -79,11 +79,11 @@ The behavior of Ansible can be customized by modifying settings in Ansible’s i
 >
 > The recommended practice is to create an `ansible.cfg` file in the directory from which you run Ansible commands. This directory would also contain any files used by your Ansible project, such as the inventory and playbooks. Another recommended practice is to create a file `.ansible.cfg` in your home directory.
 
-In the lab environment provided to you an `.ansible.cfg` file has already been created and filled with the necessary details in the home directory of your `student<X>` user on the control node:
+In the lab environment provided to you an `.ansible.cfg` file has already been created and filled with the necessary details in the home directory of your `user` user on the control node:
 
 ```bash
 [user@control ~]$ ls -la .ansible.cfg
--rw-r--r--. 1 student<X> student<X> 231 14. Mai 17:17 .ansible.cfg
+-rw-r--r--. 1 user user 231 14. Mai 17:17 .ansible.cfg
 ```
 
 Output the content of the file:
@@ -97,7 +97,7 @@ timeout = 60
 deprecation_warnings = False
 host_key_checking = False
 retry_files_enabled = False
-inventory = /home/student<X>/lab_inventory/hosts
+inventory = /home/user/inventory/inventory.ini
 ```
 
 There are multiple configuration flags provided. Most of them are not of interest here, but make sure to note the last line: there the location of the inventory is provided. That is the way Ansible knew in the previous commands what machines to connect to.
@@ -105,30 +105,27 @@ There are multiple configuration flags provided. Most of them are not of interes
 Output the content of your dedicated inventory:
 
 ```bash
-[user@control ~]$ cat /home/student<X>/lab_inventory/hosts
+[user@control ~]$ cat /home/user/inventory/inventory.ini
 [all:vars]
-ansible_user=student<X>
-ansible_ssh_pass=ansible
+ansible_user=user
+ansible_ssh_pass=password
 ansible_port=22
 
 [web]
-node1 ansible_host=11.22.33.44
-node2 ansible_host=22.33.44.55
-node3 ansible_host=33.44.55.66
+node1 ansible_host=192.168.55.201
+node2 ansible_host=192.168.55.202
+node3 ansible_host=192.168.55.203
 
 [control]
-ansible ansible_host=44.55.66.77
+ansible ansible_host=192.168.55.200
 ```
 
-> **Tip**
->
-> Note that each student has an individual lab environment. The IP addresses shown above are only an example and the IP addresses of your individual environments are different. As with the other cases, replace **\<X\>** with your actual student number.
 
 ### Step 3 - Ping a host
 
 > **Warning**
 >
-> **Don’t forget to run the commands from the home directory of your student user, `/home/student<X>`. That is where your `.ansible.cfg` file is located, without it Ansible will not know what which inventory to use.**
+> **Don’t forget to run the commands from the home directory of your student user, `/home/user`. That is where your `ansible.cfg` file is located, without it Ansible will not know what which inventory to use.**
 
 Let's start with something really basic - pinging a host. To do that we use the Ansible `ping` module. The `ping` module makes sure our target hosts are responsive. Basically, it connects to the managed host, executes a small script there and collects the results. This ensures that the managed host is reachable and that Ansible is able to execute commands properly on it.
 
@@ -187,7 +184,7 @@ Now let's see how we can run a good ol' fashioned Linux command and format the o
 ```bash
 [user@control ~]$ ansible node1 -m command -a "id"
 node1 | CHANGED | rc=0 >>
-uid=1001(student1) gid=1001(student1) Gruppen=1001(student1) Kontext=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+uid=1001(user) gid=1001(user) Gruppen=1001(user) Kontext=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 ```
 
 In this case the module is called `command` and the option passed with `-a` is the actual command to run. Try to run this ad hoc command on all managed hosts using the `all` host pattern.
@@ -229,15 +226,15 @@ As mentioned this produces an **error**:
     }
 ```
 
-The output of the ad hoc command is screaming **FAILED** in red at you. Why? Because user **student\<X\>** is not allowed to write the motd file.
+The output of the ad hoc command is screaming **FAILED** in red at you. Why? Because user **user** is not allowed to write the motd file.
 
 Now this is a case for privilege escalation and the reason `sudo` has to be setup properly. We need to instruct Ansible to use `sudo` to run the command as root by using the parameter `-b` (think "become").
 
 > **Tip**
 >
-> Ansible will connect to the machines using your current user name (student\<X\> in this case), just like SSH would. To override the remote user name, you could use the `-u` parameter.
+> Ansible will connect to the machines using your current user name (user in this case), just like SSH would. To override the remote user name, you could use the `-u` parameter.
 
-For us it’s okay to connect as `student<X>` because `sudo` is set up. Change the command to use the `-b` parameter and run again:
+For us it’s okay to connect as `user` because `sudo` is set up. Change the command to use the `-b` parameter and run again:
 
 ```bash
 [user@control ~]$ ansible node1 -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -b
@@ -257,7 +254,7 @@ node1 | CHANGED => {
     "owner": "root",
     "secontext": "system_u:object_r:etc_t:s0",
     "size": 19,
-    "src": "/home/student1/.ansible/tmp/ansible-tmp-1557857641.21-120920996103312/source",
+    "src": "/home/user/.ansible/tmp/ansible-tmp-1557857641.21-120920996103312/source",
     "state": "file",
     "uid": 0
 ```

@@ -33,12 +33,14 @@ In this lab you work in a pre-configured lab environment. You will have access t
 
 Login to your host host via SSH:
 
+[Lab IP info](lab_info/README.md)
+
 > **Warning**
 >
-> Replace **11.22.33.44** by your **IP** provided to you, and the **X** in student**X** by the student number provided to you.
+> Inlocuieste **172.30.170.X** cu **IP-ul** din tabelul Lab IP info corespunzator numelui tau.
 
 ```bash
-ssh root@11.22.33.44
+ssh root@172.30.170.X
 ```
 
 > **Tip**
@@ -71,7 +73,7 @@ Check Ansible has been installed correctly
 
 ```bash
 [user@control ~]# ansible --version
-ansible 2.8.0
+ansible 2.8.5
 [...]
 ```
 
@@ -79,12 +81,6 @@ ansible 2.8.0
 >
 > Ansible is keeping configuration management simple. Ansible requires no database or running daemons and can run easily on a laptop. On the managed hosts it needs no running agent.
 
-Log out of the root account again:
-
-```bash
-[user@control ~]# exit
-logout
-```
 
 > **Note**
 >

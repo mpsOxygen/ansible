@@ -31,12 +31,12 @@ The first thing we need is an inventory of your managed hosts. This is the equiv
 
 There will be one inventory, the **Workshop Inventory**. Click the **Workshop Inventory** then click the **Hosts** button
 
-The inventory information at `~/lab_inventory/hosts` was pre-loaded into the Ansible Tower Inventory as part of the provisioning process.
+The inventory information at `~/inventory/inventory.ini` was pre-loaded into the Ansible Tower Inventory as part of the provisioning process.
 
 ```bash
-$ cat ~/lab_inventory/hosts
+$ cat ~/inventory/inventory.ini
 [all:vars]
-ansible_user=student<X>
+ansible_user=user
 ansible_ssh_pass=PASSWORD
 ansible_port=22
 
