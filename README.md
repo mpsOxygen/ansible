@@ -38,7 +38,7 @@ Having said that, the exercises themselves should take roughly 4-5 hours. The fi
 
 ## Lab IPs
 
-[Lab IP info](lab_info.md)
+[Lab IP info](lab_info/README.md)
 
 ## Section 1 - Command-line Ansible Exercises
 
