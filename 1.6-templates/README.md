@@ -1,7 +1,5 @@
 # Workshop Exercise - Templates
 
-**Read this in other languages**:
-<br>![uk](../images/uk.png) [English](README.md),  ![japan](../images/japan.png)[日本語](README.ja.md), ![brazil](../images/brazil.png) [Portugues do Brasil](README.pt-br.md), ![france](../images/fr.png) [Française](README.fr.md),![Español](../images/col.png) [Español](README.es.md).
 
 ## Table of Contents
 
@@ -25,7 +23,7 @@ As an example of using templates you will change the motd file to contain host-s
 First create the directory `templates` to hold template resources in `~/ansible-files/`:
 
 ```bash
-[student<X>@ansible ansible-files]$ mkdir templates
+[user@control ansible-files]$ mkdir templates
 ```
 
 Then in the `~/ansible-files/templates/` directory create the template file `motd-facts.j2`:
@@ -90,7 +88,7 @@ Add a line to the template to list the current kernel of the managed node.
 * Find the fact:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m setup|grep -i kernel
+[user@control ansible-files]$ ansible node1 -m setup|grep -i kernel
        "ansible_kernel": "3.10.0-693.el7.x86_64",
 ```
 

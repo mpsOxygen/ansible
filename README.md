@@ -1,8 +1,6 @@
 # Ansible Workshop - Ansible for Red Hat Enterprise Linux
 
-**Read this in other languages**:
-<br>![uk](images/uk.png) [English](README.md),  ![japan](images/japan.png)[日本語](README.ja.md), ![brazil](images/brazil.png) [Portugues do Brasil](README.pt-br.md), ![france](images/fr.png) [Français](README.fr.md), ![Español](images/col.png) [Español](README.es.md).
-<br>
+
 
 Ansible is simple yet powerful IT automation for application deployment, configuration management, and orchestration that you can learn quickly. In the first section of this lab you will learn to use command-line Ansible for automation from the basics up to some more advanced concepts. The second section of this lab covers Ansible Automation Platform and provide the user an overview of what Ansible Tower is, how it works and what the benefit of it is.
 
@@ -13,8 +11,9 @@ After finishing this lab you are ready to start using Ansible for your automatio
 * [Presentations](#presentations)
 * [Time planning](#time-planning)
 * [Lab Diagram](#lab-diagram)
+* [Lab IPs](#Lab IPs)
 * [Section 1 - Command-line Ansible Exercises](#section-1---command-line-ansible-exercises)
-* [Section 2 - Ansible Automation Platform Exercises](#section-2---ansible-automation-platform-exercises)
+* [~~Section 2 - Ansible Automation Platform Exercises~~](#section-2---ansible-automation-platform-exercises)
 * [Supplemental Exercises](#supplemental-exercises)
 
 ## Presentations
@@ -37,6 +36,10 @@ Having said that, the exercises themselves should take roughly 4-5 hours. The fi
 
 ![ansible rhel lab diagram](images/rhel_lab_diagram.png)
 
+## Lab IPs
+
+[Lab IP info](lab_info.md)
+
 ## Section 1 - Command-line Ansible Exercises
 
 * [Exercise 1.1 - Check the Prerequisites](1.1-setup)
@@ -47,15 +50,15 @@ Having said that, the exercises themselves should take roughly 4-5 hours. The fi
 * [Exercise 1.6 - Templates](1.6-templates)
 * [Exercise 1.7 - Roles](1.7-role)
 
-## Section 2 - Ansible Automation Platform Exercises
+## ~~Section 2 - Ansible Automation Platform Exercises~~
 
-* [Exercise 2.1 - Introduction to Tower](2.1-intro)
-* [Exercise 2.2 - Inventories, credentials and ad hoc commands](2.2-cred)
-* [Exercise 2.3 - Projects & job templates](2.3-projects)
-* [Exercise 2.4 - Surveys](2.4-surveys)
-* [Exercise 2.5 - Role based access control](2.5-rbac)
-* [Exercise 2.6 - Workflows](2.6-workflows)
-* [Exercise 2.7 - Wrap up](2.7-wrap)
+* [~~Exercise 2.1 - Introduction to Tower~~](2.1-intro)
+* [~~Exercise 2.2 - Inventories, credentials and ad hoc commands~~](2.2-cred)
+* [~~Exercise 2.3 - Projects & job templates~~](2.3-projects)
+* [~~Exercise 2.4 - Surveys~~](2.4-surveys)
+* [~~Exercise 2.5 - Role based access control~~](2.5-rbac)
+* [~~Exercise 2.6 - Workflows~~](2.6-workflows)
+* [~~Exercise 2.7 - Wrap up~~](2.7-wrap)
 
 ## Supplemental Exercises
 

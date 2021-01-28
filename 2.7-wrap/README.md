@@ -123,7 +123,7 @@ This time we use the power of Ansible to check the results: execute curl to get 
 <!-- {% raw %} -->
 
 ```bash
-[student<X>@ansible ~]$ ansible web -m command -a "curl -s http://{{ ansible_host }}"
+[user@control ~]$ ansible web -m command -a "curl -s http://{{ ansible_host }}"
  [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because get_url or uri is insufficient you can add 'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
 
 node2 | CHANGED | rc=0 >>

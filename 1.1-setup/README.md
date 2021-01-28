@@ -1,7 +1,5 @@
 # Workshop Exercise - Check the Prerequisites
 
-**Read this in other languages**:
-<br>![uk](../images/uk.png) [English](README.md),  ![japan](images/japan.png)[日本語](README.ja.md), ![brazil](images/brazil.png) [Portugues do Brasil](README.pt-br.md), ![france](images/fr.png) [Française](README.fr.md),![Español](images/col.png) [Español](README.es.md).
 
 ## Table of Contents
 
@@ -26,31 +24,41 @@ In this lab you work in a pre-configured lab environment. You will have access t
 
 | Role                 | Inventory name |
 | ---------------------| ---------------|
-| Ansible Control Host | ansible        |
+| Ansible Control Host | control        |
 | Managed Host 1       | node1          |
 | Managed Host 2       | node2          |
 | Managed Host 3       | node3          |
 
 ### Step 1 - Access the Environment
 
-Login to your control host via SSH:
+Login to your host host via SSH:
 
 > **Warning**
 >
 > Replace **11.22.33.44** by your **IP** provided to you, and the **X** in student**X** by the student number provided to you.
 
 ```bash
-ssh studentX@11.22.33.44
+ssh root@11.22.33.44
 ```
 
 > **Tip**
 >
-> The password will be provided by your instructor
+> Password: 1qaz@WSX
 
-Then become root:
+Start the environment:
 
 ```bash
-[student<X>@ansible ~]$ sudo -i
+[root@localhost rhce8env]# vagrant up
+```
+
+> **Warning**
+> 
+>Wait for vagrant to finish bringing up the environment.
+
+Login to your control host via SSH:
+
+```bash
+ssh user@control
 ```
 
 Most prerequisite tasks have already been done for you:
@@ -62,8 +70,8 @@ Most prerequisite tasks have already been done for you:
 Check Ansible has been installed correctly
 
 ```bash
-[root@ansible ~]# ansible --version
-ansible 2.7.0
+[user@control ~]# ansible --version
+ansible 2.8.0
 [...]
 ```
 
@@ -74,7 +82,7 @@ ansible 2.7.0
 Log out of the root account again:
 
 ```bash
-[root@ansible ~]# exit
+[user@control ~]# exit
 logout
 ```
 

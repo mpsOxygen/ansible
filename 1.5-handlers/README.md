@@ -1,7 +1,5 @@
 # Workshop Exercise - Conditionals, Handlers and Loops
 
-**Read this in other languages**:
-<br>![uk](../images/uk.png) [English](README.md),  ![japan](../images/japan.png)[日本語](README.ja.md), ![brazil](../images/brazil.png) [Portugues do Brasil](README.pt-br.md), ![france](../images/fr.png) [Française](README.fr.md),![Español](../images/col.png) [Español](README.es.md).
 
 ## Table of Contents
 
@@ -104,7 +102,7 @@ As a an example, let’s write a playbook that:
 First we need the file Ansible will deploy, let’s just take the one from node1. Remember to replace the IP address shown in the listing below with the IP address from your individual `node1`.
 
 ```bash
-[student<X>@ansible ansible-files]$ scp node1:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
+[user@control ansible-files]$ scp node1:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
 student<X>@11.22.33.44's password:
 httpd.conf
 ```
@@ -247,7 +245,7 @@ Check the output:
 Verify that the user `dev_user` was indeed created on `node1`:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m command -a "id dev_user"
+[user@control ansible-files]$ ansible node1 -m command -a "id dev_user"
 node1 | CHANGED | rc=0 >>
 uid=1002(dev_user) gid=1002(dev_user) Gruppen=1002(dev_user),50(ftp)
 ```

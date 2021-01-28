@@ -1,7 +1,5 @@
 # Workshop Exercise - Using Variables
 
-**Read this in other languages**:
-<br>![uk](../images/uk.png) [English](README.md),  ![japan](../images/japan.png)[日本語](README.ja.md), ![brazil](../images/brazil.png) [Portugues do Brasil](README.pt-br.md), ![france](../images/fr.png) [Française](README.fr.md),![Español](../images/col.png) [Español](README.es.md).
 
 ## Table of Contents
 
@@ -59,7 +57,7 @@ For understanding and practice let’s do a lab. Following up on the theme "Let�
 On the ansible control host, as the `student<X>` user, create the directories to hold the variable definitions in `~/ansible-files/`:
 
 ```bash
-[student<X>@ansible ansible-files]$ mkdir host_vars group_vars
+[user@control ansible-files]$ mkdir host_vars group_vars
 ```
 
 Now create two files containing variable definitions. We’ll define a variable named `stage` which will point to different environments, `dev` or `prod`:
@@ -132,7 +130,7 @@ Create a new Playbook called `deploy_index_html.yml` in the `~/ansible-files/` d
 * Run the Playbook:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook deploy_index_html.yml
+[user@control ansible-files]$ ansible-playbook deploy_index_html.yml
 ```
 
 ### Step 4 - Test the Result
@@ -142,7 +140,7 @@ The Ansible Playbook copies different files as index.html to the hosts, use `cur
 For node1:
 
 ```bash
-[student<X>@ansible ansible-files]$ curl http://node1
+[user@control ansible-files]$ curl http://node1
 <body>
 <h1>This is a development webserver, have fun!</h1>
 </body>
@@ -177,19 +175,19 @@ Ansible facts are variables that are automatically discovered by Ansible from a 
 To get an idea what facts Ansible collects by default, on your control node as your student user run:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m setup
+[user@control ansible-files]$ ansible node1 -m setup
 ```
 
 This might be a bit too much, you can use filters to limit the output to certain facts, the expression is shell-style wildcard:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m setup -a 'filter=ansible_eth0'
+[user@control ansible-files]$ ansible node1 -m setup -a 'filter=ansible_eth0'
 ```
 
 Or what about only looking for memory related facts:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m setup -a 'filter=ansible_*_mb'
+[user@control ansible-files]$ ansible node1 -m setup -a 'filter=ansible_*_mb'
 ```
 
 ### Step 6 - Challenge Lab: Facts
@@ -205,8 +203,8 @@ Or what about only looking for memory related facts:
 > **Solution below\!**
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m setup|grep distribution
-[student<X>@ansible ansible-files]$ ansible node1 -m setup -a 'filter=ansible_distribution' -o
+[user@control ansible-files]$ ansible node1 -m setup|grep distribution
+[user@control ansible-files]$ ansible node1 -m setup -a 'filter=ansible_distribution' -o
 ```
 
 ### Step 7 - Using Facts in Playbooks
@@ -234,7 +232,7 @@ Facts can be used in a Playbook like variables, using the proper naming, of cour
 Execute it to see how the facts are printed:
 
 ```bash
-[student<X>@ansible ansible-files]$ ansible-playbook facts.yml
+[user@control ansible-files]$ ansible-playbook facts.yml
 
 PLAY [Output facts within a playbook] ******************************************
 
