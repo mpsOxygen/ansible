@@ -33,7 +33,7 @@ In this lab you work in a pre-configured lab environment. You will have access t
 
 Login to your host host via SSH:
 
-[Lab IP info](lab_info/README.md)
+[Lab IP info](../lab_info/README.md)
 
 > **Warning**
 >
