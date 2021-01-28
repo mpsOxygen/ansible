@@ -123,11 +123,11 @@ First run the playbook itself, then run curl against `node1` with port `8080` an
 ```bash
 [user@control ansible-files]$ ansible-playbook apache_config_tpl.yml
 [...]
-[user@control ansible-files]$ curl http://18.195.235.231:8080
+[user@control ansible-files]$ curl http://192.168.55.201:8080
 <body>
 <h1>This is a development webserver, have fun!</h1>
 </body>
-[user@control ansible-files]$ curl http://35.156.28.209:80
+[user@control ansible-files]$ curl http://192.168.55.202:80
 <body>
 <h1>This is a production webserver, take care!</h1>
 </body>
