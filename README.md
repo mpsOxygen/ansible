@@ -11,7 +11,7 @@ After finishing this lab you are ready to start using Ansible for your automatio
 * [Presentations](#presentations)
 * [Time planning](#time-planning)
 * [Lab Diagram](#lab-diagram)
-* [Lab IPs](#Lab IPs)
+* [Lab IPs](#Lab-IPs)
 * [Section 1 - Command-line Ansible Exercises](#section-1---command-line-ansible-exercises)
 * [~~Section 2 - Ansible Automation Platform Exercises~~](#section-2---ansible-automation-platform-exercises)
 * [Supplemental Exercises](#supplemental-exercises)
