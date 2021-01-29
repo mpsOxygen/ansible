@@ -40,6 +40,8 @@ Having said that, the exercises themselves should take roughly 4-5 hours. The fi
 
 [Lab IP info](lab_info/README.md)
 
+[Powershell script](powershell/README.md)
+
 ## Section 1 - Command-line Ansible Exercises
 
 * [Exercise 1.1 - Check the Prerequisites](1.1-setup)
